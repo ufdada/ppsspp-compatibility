@@ -1,15 +1,21 @@
-starImage = 'star2.png';
-starGreyImage = 'star_grey.png';
+var starImage = 'star2.png';
+var starGreyImage = 'star_grey.png';
+var imagePath = 'img/';
+
+//All rating categories
+var ratingCats = ['graphics', 'sound', 'gameplay'];
+
+//All Tabs
+var tabs = ['bugs', 'configuration', 'screenshots'];
 
 function showTab(id){
-	var ids = ['bugs', 'configuration', 'screenshots'];
-	for (var i=0; i < ids.length; i++){
-		if (id == ids[i]){
+	for (var i=0; i < tabs.length; i++){
+		if (id == tabs[i]){
 			document.getElementById(id).style.display = "block";
 			document.getElementById(id + "_tab").className = "active";
 		} else {
-			document.getElementById(ids[i]).style.display = "none";
-			document.getElementById(ids[i] + "_tab").className = "";
+			document.getElementById(tabs[i]).style.display = "none";
+			document.getElementById(tabs[i] + "_tab").className = "";
 		}
 	}
 	return true;
@@ -27,7 +33,7 @@ function readRating(name){
 	try {
 		number = localStorage.getItem(name);
 	} catch(e) {
-		var number = null;
+		var number = 0;
 		if (document.cookie) {
 			var cookies = document.cookie.split(";");
 			for(var i = 0; i < cookies.length; i++){
@@ -43,51 +49,51 @@ function readRating(name){
 	return number;
 }
 
-function setRatingImage(name, number, image){
-	if (typeof number == undefined) { number = 0 }
+function setRatingImage(name, number){
+	var imageSrc = name + "_star."
+	if (number == null) { number = 0 }
 	for (k = 5; k > number; k--){
-		document.getElementById(name + "_star." + k).src = 'img/' + starGreyImage;
+		document.getElementById(imageSrc + k).src = imagePath + starGreyImage;
 	}
 	
 	for (k = 1; k <= number; k++){
-		document.getElementById(name + "_star." + k).src = 'img/' + starImage;
+		document.getElementById(imageSrc + k).src = imagePath + starImage;
 	}
 }
 
 window.onload = function(){
-	var cats = ['graphics', 'sound', 'gameplay'];
-	for (var i = 0; i < cats.length; i++){
-		var rating = readRating(cats[i]);
+	
+	for (var i = 0; i < ratingCats.length; i++){
+		var category = ratingCats[i];
+		var rating = readRating(category);
 
 		if (rating != null){
-			setRatingImage(cats[i], rating);
+			setRatingImage(category, rating);
 		}
 	
 		for (var j = 1; j < 6; j++){
-			document.getElementById(cats[i] + "_star." + j).onmouseover = function(e){
+			rateElement = document.getElementById(category + "_star." + j);
+			
+			rateElement.onmouseover = function(e){
 				var id = this.id.substr(-1);
 				var name = this.id.split("_")[0];
 				
 				setRatingImage(name, id);
 			}
 			
-			document.getElementById(cats[i] + "_star." + j).onmouseout = function(e){
+			rateElement.onmouseout = function(e){
 				var id = this.id.substr(-1);
 				var name = this.id.split("_")[0];
 				var rating = readRating(name);
 				
-				if (rating != null){
-					id = rating;
-				}
-				setRatingImage(name, id);
+				setRatingImage(name, rating);
 			}
 			
-			document.getElementById(cats[i] + "_star." + j).onclick = function(e){
+			rateElement.onclick = function(e){
 				var id = this.id.substr(-1);
 				var name = this.id.split("_")[0];
 
 				saveRating(name, id);
-				readRating(name);
 			}
 		}
 	}
