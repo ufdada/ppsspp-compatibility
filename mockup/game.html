@@ -71,9 +71,9 @@
 			</div>
 			<div class="span8">
 				<ul class="nav nav-tabs">
-				  <li id="screenshots_tab" class="active"><a href="#" onclick="show('screenshots')">Screenshots</a></li>
-				  <li id="configuration_tab"><a href="#" onclick="show('configuration')">Configuration</a></li>
-				  <li id="bugs_tab"><a href="#" onclick="show('bugs')">Known Bugs</a></li>
+				  <li id="screenshots_tab" class="active"><a href="#" onclick="showTab('screenshots')">Screenshots</a></li>
+				  <li id="configuration_tab"><a href="#" onclick="showTab('configuration')">Configuration</a></li>
+				  <li id="bugs_tab"><a href="#" onclick="showTab('bugs')">Known Bugs</a></li>
 				</ul>
 				<div class="screenshots content" id="screenshots"  style="display: block;">
 					<ul class="thumbnails">
@@ -179,6 +179,36 @@
 
 				</div>
 				
+				<h2>Your Rating:</h2>
+				<table class="table">
+					<tr>
+						<td>Graphics:</td>
+						<td>
+							<img id="graphics_star.1" src="img/star_grey.png" title="1 Star out of 5">
+							<img id="graphics_star.2" src="img/star_grey.png" title="2 Star out of 5">
+							<img id="graphics_star.3" src="img/star_grey.png" title="3 Star out of 5">
+							<img id="graphics_star.4" src="img/star_grey.png" title="4 Star out of 5">
+							<img id="graphics_star.5" src="img/star_grey.png" title="5 Star out of 5">
+						</td>
+						<td>Sound:</td>
+						<td>
+							<img id="sound_star.1" src="img/star_grey.png" title="1 Star out of 5">
+							<img id="sound_star.2" src="img/star_grey.png" title="2 Star out of 5">
+							<img id="sound_star.3" src="img/star_grey.png" title="3 Star out of 5">
+							<img id="sound_star.4" src="img/star_grey.png" title="4 Star out of 5">
+							<img id="sound_star.5" src="img/star_grey.png" title="5 Star out of 5">
+						</td>
+						<td>Gameplay:</td>
+						<td>
+							<img id="gameplay_star.1" src="img/star_grey.png" title="1 Star out of 5">
+							<img id="gameplay_star.2" src="img/star_grey.png" title="2 Star out of 5">
+							<img id="gameplay_star.3" src="img/star_grey.png" title="3 Star out of 5">
+							<img id="gameplay_star.4" src="img/star_grey.png" title="4 Star out of 5">
+							<img id="gameplay_star.5" src="img/star_grey.png" title="5 Star out of 5">
+						</td>
+					</tr>
+				</table>
+				
 				<h2>Comments:</h2>
 				<ul class="pagination">
 					<li class="disabled"><a href="#">&laquo;</a></li>
@@ -195,25 +225,25 @@
 				</ul>
 				<table class="table table-striped">
 					<tr>
-						<td class="span2">
+						<td>
 							<center>
 								<img src="img/dummy/identicon.png"/>
 								<p><a href="#" class="badge badge-warning">DemoUser</a></p>
 							</center>
 						</td>
-						<td class="span5">
+						<td>
 							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 							</p>
 						</td>
 					</tr>
 					<tr>
-						<td class="span2 right">
+						<td>
 							<center>
 								<img src="img/dummy/identicon.png"/>
 								<p><a href="#" class="badge badge-info">DemoUser</a></p>
 							</center>
 						</td>
-						<td class="span5">
+						<td>
 							<textarea placeholder="Enter a message"></textarea>
 							<button class="btn btn-small btn-success">Comment</button>
 						</td>
